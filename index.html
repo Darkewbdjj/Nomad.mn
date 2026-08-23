@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOMAD.MN</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #08090d;
+    color: #fff;
+}
+
+/* ================= NAVBAR ================= */
+
+nav {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(8, 9, 13, .97);
+    border-bottom: 1px solid #1d1f27;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #7c5cff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #9296a5;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* STEAM + DISCORD */
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.steam-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    background: #171a21;
+    border: 1px solid #2b3038;
+
+    color: white;
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.steam-btn:hover {
+    background: #1b2838;
+    border-color: #66c0f4;
+}
+
+.steam-icon {
+    color: #66c0f4;
+    font-size: 15px;
+}
+
+.discord {
+    background: #5865f2;
+
+    padding: 11px 17px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.discord:hover {
+    background: #4752c4;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    padding: 90px 7% 55px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #231650 0%,
+            transparent 45%
+        );
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 80px);
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+}
+
+.hero h1 span {
+    color: #7c5cff;
+}
+
+.hero p {
+    color: #858997;
+
+    margin-top: 15px;
+
+    font-size: 16px;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.btn {
+    padding: 13px 22px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.primary {
+    background: #7c5cff;
+    color: white;
+}
+
+.primary:hover {
+    background: #6949e8;
+}
+
+.secondary {
+    border: 1px solid #292c36;
+
+    color: white;
+
+    background: #11131a;
+}
+
+.secondary:hover {
+    background: #191c25;
+}
+
+
+/* ================= STATS ================= */
+
+.stats {
+    width: 86%;
+    max-width: 1100px;
+
+    margin: 10px auto 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.stat {
+    background: #101218;
+
+    border: 1px solid #1d2029;
+
+    padding: 23px;
+
+    border-radius: 13px;
+
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 28px;
+
+    font-weight: 900;
+}
+
+.stat-label {
+    color: #747887;
+
+    font-size: 12px;
+
+    margin-top: 7px;
+
+    text-transform: uppercase;
+}
+
+
+/* ================= SERVERS ================= */
+
+.container {
+    width: 86%;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.section-title h2 {
+    font-size: 22px;
+}
+
+.online {
+    color: #42e58a;
+
+    font-size: 12px;
+}
+
+
+/* SERVER CARD */
+
+.server {
+    background: #101218;
+
+    border: 1px solid #1e212b;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    align-items: center;
+
+    transition: .2s;
+}
+
+.server:hover {
+    border-color: #3c3f4d;
+
+    transform:
+        translateY(-2px);
+}
+
+.server-name {
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+.server-info {
+    display: flex;
+
+    gap: 16px;
+
+    color: #777b89;
+
+    font-size: 12px;
+}
+
+.server-info span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.green {
+    color: #42e58a;
+}
+
+.server-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.players {
+    text-align: right;
+
+    min-width: 65px;
+}
+
+.players strong {
+    display: block;
+
+    font-size: 15px;
+}
+
+.players small {
+    color: #666a77;
+
+    font-size: 11px;
+}
+
+
+/* COPY BUTTON */
+
+.copy-btn {
+    border: 1px solid #292d38;
+
+    background: #161820;
+
+    color: white;
+
+    border-radius: 7px;
+
+    padding: 9px 13px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    background: #7c5cff;
+
+    border-color: #7c5cff;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 80px;
+
+    padding: 30px 7%;
+
+    border-top: 1px solid #1d1f27;
+
+    color: #5f6370;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 700px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-buttons {
+        gap: 5px;
+    }
+
+    .steam-btn {
+        padding: 9px 10px;
+    }
+
+    .discord {
+        padding: 10px 11px;
+    }
+
+    .hero {
+        padding: 65px 5% 40px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .stats {
+        width: 90%;
+
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .server {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .server-right {
+        justify-content: space-between;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        NOMAD<span>.MN</span>
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#">Home</a>
+        </li>
+
+        <li>
+            <a href="#servers">Servers</a>
+        </li>
+
+        <li>
+            <a href="#">Rankings</a>
+        </li>
+
+        <li>
+            <a href="#">Store</a>
+        </li>
+
+    </ul>
+
+
+    <div class="nav-buttons">
+
+        <!-- STEAM -->
+
+        <a
+            href="#"
+            class="steam-btn"
+            onclick="steamLogin()"
+        >
+
+            <span class="steam-icon">
+                ●
+            </span>
+
+            Steam
+
+        </a>
+
+
+        <!-- DISCORD -->
+
+        <a
+            href="#"
+            class="discord"
+        >
+            Discord
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>
+        WELCOME TO
+        <span>NOMAD</span>
+    </h1>
+
+    <p>
+        Монголын gaming серверүүдийн нэгдсэн платформ
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#servers"
+            class="btn primary"
+        >
+            Browse Servers
+        </a>
+
+
+        <a
+            href="#"
+            class="btn secondary"
+        >
+            Join Discord
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            32
+        </div>
+
+        <div class="stat-label">
+            Servers
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div
+            class="stat-number"
+            id="totalPlayers"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Players Online
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            99.9%
+        </div>
+
+        <div class="stat-label">
+            Uptime
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= SERVER LIST ================= -->
+
+<main
+    class="container"
+    id="servers"
+>
+
+
+    <div class="section-title">
+
+        <h2>
+            Game Servers
+        </h2>
+
+
+        <div class="online">
+            ● ALL SYSTEMS ONLINE
+        </div>
+
+    </div>
+
+
+    <div id="serverList"></div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 NOMAD.MN — All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+/* ================= SERVER GENERATOR ================= */
+
+const serverList =
+    document.getElementById(
+        "serverList"
+    );
+
+
+for (
+    let i = 1;
+    i <= 32;
+    i++
+) {
+
+    const port =
+        27015 + i - 1;
+
+
+    serverList.innerHTML += `
+
+        <div class="server">
+
+
+            <div>
+
+                <div class="server-name">
+
+                    NOMAD #${i}
+
+                </div>
+
+
+                <div class="server-info">
+
+                    <span class="green">
+                        ● Online
+                    </span>
+
+                    <span>
+                        CS2
+                    </span>
+
+                    <span>
+                        128 Tick
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="server-right">
+
+
+                <div class="players">
+
+                    <strong>
+                        0 / 10
+                    </strong>
+
+                    <small>
+                        Players
+                    </small>
+
+                </div>
+
+
+
+                <button
+                    class="copy-btn"
+
+                    onclick="
+                        copyIP(
+                            'YOUR_IP:${port}'
+                        )
+                    "
+                >
+
+                    Copy IP
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* ================= COPY IP ================= */
+
+function copyIP(ip) {
+
+    navigator.clipboard
+        .writeText(ip)
+        .then(() => {
+
+            alert(
+                "Server IP copied: "
+                + ip
+            );
+
+        });
+
+}
+
+
+
+/* ================= STEAM ================= */
+
+function steamLogin() {
+
+    alert(
+        "Steam Login холбохын тулд backend Steam authentication тохируулах шаардлагатай."
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
